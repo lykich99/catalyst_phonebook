@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+      <title>Phone Book</title>
+	  <script src="[% c.uri_for('/static/bootstrap/js/jquery-1.11.1.min.js') %]"> </script>	  
+	  <link type="text/css" href="[% c.uri_for('/static/bootstrap/css/bootstrap.css') %]" rel="stylesheet" media="all" />
+	  <link rel="stylesheet" href="[% c.uri_for('/static/bootstrap/css/bootstrapValidator.css') %]"/>  
+	  <link type="text/css" href="[% c.uri_for('/static/bootstrap/css/bootstrap-theme.css') %]" rel="stylesheet" media="all" />
+	  <script type="text/javascript " language="javascript" src="[% c.uri_for('/static/bootstrap/js/bootstrap.js') %]"> </script>
+	  <script type="text/javascript" src="[% c.uri_for('/static/bootstrap/js/bootstrapValidator.js') %]"></script>
+	  <link type="text/css" href="[% c.uri_for('/static/css/main.css') %]" rel="stylesheet" media="all" />
+	  <link type="text/css" href="[% c.uri_for('/static/bootstrap/css/bootstrap.icon-large.min.css') %]" rel="stylesheet" media="all" />
+      <script type="text/javascript " language="javascript" src="[% c.uri_for('/static/js/jquery-ui.min.js') %]"></script>
+      <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/css/smoothness/jquery-ui.min.css') %]">
+	  <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/css/jquery.dataTables.css') %]">
+	  <script type="text/javascript" language="javascript" src="[% c.uri_for('/static/js/jquery.dataTables.js') %]"></script>
+	  <script type="text/javascript " language="javascript" src="[% c.uri_for('/static/js/main.js') %]"></script>
+    </head>
+    <body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+	   <div id="bs-example-navbar-collapse-6" class="collapse navbar-collapse">
+		  <ul class="nav navbar-nav">
+			<li class="active">
+			  <a href="/">PHONEBOOK</a>
+			</li>	
+		  </ul>
+	   </div>
+	 </div><!-- container -->
+    </nav>
+    <div class="container">
+     <div class="jumbotron">
+		<h1>Phone Book</h1>
+     </div>
+    <div>
+    <div id="a_err" class="alert alert-danger alert-dismissible myalert" role="alert">
+       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <strong>Error! </strong>
+    </div>   
+    <div id="a_suc" class="alert alert-success alert-dismissible myalert" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <strong>Success. Row has been deleted for table.</strong>
+    </div>     
+    <div id="a_add" class="alert alert-success alert-dismissible myalert" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <strong>Success. Row has been add for table.</strong>
+    </div>       
+    <div id="a_ed" class="alert alert-success alert-dismissible myalert" role="alert">
+     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+     <strong>Success. Row has been modified.</strong>
+    </div>       
+    <div>
+	  <p>
+	  <button id="bt_add" class="btn btn-success" type="button">Add row</button>  
+	  <button id="bt_del" class="btn btn-danger disabled" type="button">Delete row</button>
+	  <button id="bt_edit" class="btn btn-warning disabled" type="button">Edit row</button>  
+	 </p>
+    </div>
+    <br>
+    <div class="modal"  id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+             <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">          
+			<form id="dForm" class="form-horizontal" action="#">         
+              <fieldset>
+				<div class="form-group">
+				  <label class="col-lg-2 control-label">Name</label>
+				  <div class="col-lg-9">
+				   <input type="text" class="form-control" name="username" />
+				  </div>
+				 </div>
+				<div class="form-group">
+				  <label class="col-lg-2 control-label">Phone</label>
+				  <div class="col-lg-9">
+				   <input type="text" class="form-control" name="phoneNumber" required data-bv-notempty-message="The mobile phone number is required"
+                     data-bv-digits data-bv-digits-message="The mobile phone number is not valid" />
+				   </div>
+				 </div>			
+				<div class="form-group">
+				 <label class="col-lg-2 control-label">Date</label>
+				 <div class="col-lg-9">
+				  <input type="text" id="datepicker" class="form-control" name="date" />
+				 </div>
+				</div>					
+				<div class="form-group">
+				 <label class="col-lg-2 control-label">Note</label>
+				 <div class="col-lg-9">
+				 <input type="text" class="form-control" name="note" />
+				 </div>
+				</div>
+				<div class="form-group">								  
+				 <div class="modal-footer">
+				  <div class="d_cl">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button id="bm_add" type="submit" class="btn btn-primary">Submit</button>
+				  </div>									
+				 </div>							    											
+				</div>             
+             </form>		
+			</div>  
+         </div>
+       </div>
+    </div>
+    <br>
+    <div class="container">
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="example">
+	<thead>
+		<tr>
+			<th>Num</th>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Birthday</th>
+ 			<th>Note</th>
+		</tr>
+	</thead>
+	<tbody>
+	     [% WHILE ( pb = pbs.next ) %]
+				<tr class="r">
+					<td>    [% pb.id | html %]                   </td> 
+					<td>    [% pb.name | html %]                 </td>
+					<td>    [% pb.phone | html %]                </td>
+					<td>    [% pb.birthday.strftime( '%Y-%m-%d' ) | html %] </td>			  			
+					<td>    [% pb.note | html %]    </td>			
+				</tr>
+		[% END %]
+    </tbody>
+    </table>
+    <br><br>
+    </div>
+    <div class="navbar-fixed-bottom foo">
+      
+    </div>
+    
+   </body>
+   </html>
