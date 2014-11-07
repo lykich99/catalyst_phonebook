@@ -7,9 +7,9 @@ Perl Catalyst example.  Phonebook, bootsrap, dataTables - CRUD.
 DEMO http://lweb.pl.ua/catalyst
 
 =================================================================
-A. You have to modified file ./catalyst/lib/catalyst/Model/Root.pm.
-       1. Create table for mysql. 
-         
+A. You have to modified file ./catalyst/lib/catalyst/Model/Root.pm.<br>
+ 
+        1. Create table for mysql. 
          You can do.
          
          CREATE TABLE `Phonebook` (
