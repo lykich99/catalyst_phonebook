@@ -1,10 +1,7 @@
 catalyst_phonebook
 ==================
 
-Perl Catalyst example.  Phonebook, bootsrap, dataTables - CRUD.
-===============================================================
-
-DEMO http://lweb.pl.ua/catalyst
+<a href="http://lweb.pl.ua/catalyst"> Perl Catalyst example.  Phonebook, bootsrap, dataTables - CRUD.</a>
 
 =================================================================
 A. You have to modified file ./catalyst/lib/catalyst/Model/Root.pm.<br>
